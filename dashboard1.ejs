@@ -1,0 +1,123 @@
+<!--
+<% //layout('layouts/boilerplate1') %>
+<h1 style="text-align: center; font-weight: bold;" class="display-1">EV RESQ</h1>
+<h2 class="display-2">Available Bookings</h2>
+
+<div class="card-container" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px; margin-bottom: 15px;"></div>
+
+<% //for(let booking of bookings){ %>
+    <% //if(!booking.isaccepted){ %>
+    <div class="card" style="width: 50%; background-color:rgb(172, 212, 210)">
+        <div class="card-body">
+            <p class="card-text" style="font-weight: bold;">Name : <%= //booking.name %></p>
+            <p class="card-text" style="font-weight: bold;">Current location : <%= //booking.currentLocation %></p>
+            <form action="/accept-booking/<%=// booking._id %>" method="POST">
+                <button type="submit" class="btn btn-primary" style="display:block; margin-left: auto; margin-right: auto; background-color: black; ">Accept Booking</button>
+            </form>
+        </div>
+    </div>
+    <% //} %>
+    <br>
+<% //} %>
+</div>
+<script>
+    setTimeout(() => {
+        location.reload();  
+    }, 10000);
+</script>
+-->
+
+
+<% layout('layouts/boilerplate1') %>
+<h1 class="text-center font-weight-bold display-1">EV RESQ</h1>
+<h2 class="text-center display-2">Available Bookings</h2>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-gap: 10px; margin-bottom: 15px;">
+                <% for(let booking of bookings){ %>
+                    <% if(!booking.isaccepted){ %>
+                    <div class="card" style="background-color: rgb(172, 212, 210);">
+                        <div class="card-body">
+                            <p class="card-text font-weight-bold">Name: <%= booking.name %></p>
+                            <p class="card-text font-weight-bold">Current Location: <%= booking.currentLocation %></p>
+                            <form action="/accept-booking/<%= booking._id %>" method="POST">
+                                <button type="submit" class="btn btn-dark w-100">Accept Booking</button>
+                            </form>
+                        </div>
+                    </div>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div id="map" style="height: 400px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"></div>
+        </div>
+    </div>
+</div>
+<!--
+<script>
+    // Initialize the map
+    const map = L.map('map').setView([51.505, -0.09], 13); // Default view, adjust as needed
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add markers for each booking location
+    <% for(let booking of bookings){ %>
+        <% if(!booking.isaccepted){ %>
+            const marker = L.marker([<%= booking.latitude %>, <%= booking.longitude %>]).addTo(map)
+                .bindPopup("<b><%= booking.name %></b><br><%= booking.currentLocation %>");
+        <% } %>
+    <% } %>
+
+    // Auto-refresh the page every 10 seconds
+    setTimeout(() => {
+        location.reload();  
+    }, 10000);
+</script>
+-->
+<script> var map = L.map('map').setView([51.505, -0.09], 13); 
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map); 
+    let marker, circle, zoomed;
+    
+    navigator.geolocation.watchPosition(success, error);
+    
+    function success(pos) {
+    
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        const accuracy = pos.coords.accuracy;
+    
+        if (marker) {
+            map.removeLayer(marker);
+            map.removeLayer(circle);
+        }
+        // Removes any existing marker and circule (new ones about to be set)
+    
+        marker = L.marker([lat, lng]).addTo(map);
+        circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
+        // Adds marker to the map and a circle for accuracy
+    
+        if (!zoomed) {
+            zoomed = map.fitBounds(circle.getBounds()); 
+        }
+        // Set zoom to boundaries of accuracy circle
+    
+        map.setView([lat, lng]);
+        // Set map focus to current user position
+    
+    }
+    function error(err) {
+    
+        if (err.code === 1) {
+            alert("Please allow geolocation access");
+        } else {
+            alert("Cannot get current location");
+        }
+    }
+    setTimeout(() => {
+        location.reload();  
+    }, 10000);
+</script>

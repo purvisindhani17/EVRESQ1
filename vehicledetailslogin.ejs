@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+<br>
+<main class="container mt-5">
+    <section class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card" style="background-color: #6A89A7; color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+          <div class="card-body">
+            <h2 class="text-center mb-4">Login as Driver!</h2>
+            <form action="/vehicledetailslogin" method="POST">
+              <div class="mb-3">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" type="text" name="email" id="email" placeholder="Enter email" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-control" type="password" name="password" id="password" placeholder="Enter password" required>
+              </div>
+              <div class="mb-3">
+                <button class="btn btn-success w-100">SUBMIT</button>
+              </div>
+            </form>
+            <p>Don't have an account? <a href="./vehicledetails" style="color: pink;">Register</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <br>

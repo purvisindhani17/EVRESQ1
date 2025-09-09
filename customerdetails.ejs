@@ -1,0 +1,120 @@
+<!--<% layout('layouts/boilerplate1') %>
+<main class="container mt-5">
+    <section class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card" style="background-color: #c4d6da; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+          <div class="card-body">
+            <h1 class="display1" style="text-align: center;">CUSTOMER INFORMATION</h1>
+            <br>
+                    <div class="mb-3"><b>Name:</b> <%= customer.name %></div>
+                    <div class="mb-3"><b>Phone Number:</b> <%= customer.phoneNumber %></div>
+                    <div class="mb-3"><b>Vehicle Number: </b> <%= customer.vehicleNumber %></div>
+                    <br>
+</div>
+</div>
+</div>
+</section>
+</main>
+<br>
+
+<main class="container mt-5">
+    <section class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card" style="background-color: #c4d6da; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+          <div class="card-body">
+            <h1 class="display1" style="text-align: center;">BOOKING COMPLETION FORM</h1>
+            <br>
+            <h5 CLASS="display-6">Please fill the form when you done all the tasks</h5>
+            <br>
+            <form id="completionForm" action="/complete-booking/<%=booking._id%>" method="POST">
+                <div class="checkbox-group">
+                    <div>
+                    <label>
+                        <input type="checkbox" name="destinationReached" required>
+                        Destination Reached
+                    </label>
+                </div>
+                <br>
+                <div>
+                    <label>
+                        <input type="checkbox" name="chargingCompleted" required>
+                        Charging Completed
+                    </label>
+                </div>
+                <br>
+                <div>
+                    <label>
+                        <input type="checkbox" name="paymentReceived" required>
+                        Payment Received
+                    </label>
+                </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success" style="display:block; margin-left: auto; margin-right: auto; background-color: black; ">Submit</button>
+            </form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<br>
+-->
+
+<% layout('layouts/boilerplate1') %>
+
+<main class="container mt-5">
+    <section class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card" style="background-color: #c4d6da; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <div class="card-body">
+                    <h1 class="display-4 text-center">CUSTOMER INFORMATION</h1>
+                    <br>
+                    <div class="mb-3"><i class="fas fa-user" style="margin-right: 8px;color: #007bff"></i><b>Name:</b> <%= customer.name %></div>
+                    <div class="mb-3"><i class="fas fa-phone" style="margin-right: 8px;color: #007bff"></i><b>Phone Number:</b> <%= customer.phoneNumber %></div>
+                    <div class="mb-3"><i class="fas fa-id-card" style="margin-right: 8px;color: #007bff"></i><b>Vehicle Number:</b> <%= customer.vehicleNumber %></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<br>
+
+<main class="container mt-5">
+    <section class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card" style="background-color: #c4d6da; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <div class="card-body">
+                    <h1 class="display-4 text-center">BOOKING COMPLETION FORM</h1>
+                    <br>
+                    <h5 class="text-center">Please fill the form when you have completed all the tasks</h5>
+                    <br>
+                    <form id="completionForm" action="/complete-booking/<%= booking._id %>" method="POST">
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" name="destinationReached" id="destinationReached" required>
+                            <label class="form-check-label" for="destinationReached">
+                                <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Destination Reached
+                            </label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" name="chargingCompleted" id="chargingCompleted" required>
+                            <label class="form-check-label" for="chargingCompleted">
+                                <i class="fas fa-bolt" style="margin-right: 8px;"></i> Charging Completed
+                            </label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" name="paymentReceived" id="paymentReceived" required>
+                            <label class="form-check-label" for="paymentReceived">
+                                <i class="fas fa-money-bill-wave" style="margin-right: 8px;"></i> Payment Received
+                            </label>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-success w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<br>

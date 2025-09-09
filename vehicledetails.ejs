@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate') %>
+<br>
+<main class="container mt-5">
+    <section class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card" style="background-color: #6A89A7; color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+          <div class="card-body">
+            <h2 class="text-center mb-4">Register as Driver!</h2>
+            <form action="/vehicledetails" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter name" required>
+                </div>
+                <div class="mb-3"><label class="form-label" for="email">Email</label>
+                    <input class="form-control" type="email" name="email" id="email" placeholder="Enter email" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input class="form-control" type="password" name="password" id="password" placeholder="Enter password" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" name="phoneNumber" placeholder="Enter phone number" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Vehicle Number</label>
+                    <input type="text" class="form-control" name="vehicleNumber" placeholder="e.g., DL14CM0618" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">License Number</label>
+                    <input type="text" class="form-control" name="licenseNumber" placeholder="Enter license number" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Preferred Location</label>
+                    <select class="form-select" name="preferredLocation" required>
+                        <option value="">Select Location</option>
+                        <option value="North">North</option>
+                        <option value="South">South</option>
+                        <option value="East">East</option>
+                        <option value="West">West</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+            </form>
+            <br>
+            <p>Already have an account? <a href="./vehicledetailslogin" style="color: rgb(72, 71, 151);">Login</a></p>
+        </div>
+    </div>
+  </div>
+</section>
+</main>
+<br>
+
